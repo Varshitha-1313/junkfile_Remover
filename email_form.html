@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Input</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .container { width: 350px; margin: 50px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        input, button { padding: 10px; margin: 10px; border: none; border-radius: 5px; }
+        button { background: #28a745; color: white; cursor: pointer; }
+        button:hover { background: #218838; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Email</h2>
+        <input type="email" id="emailInput" placeholder="Enter Email" required>
+        <button onclick="sendEmail()">Submit</button>
+        <p id="responseMessage"></p>
+    </div>
+
+    <script>
+        function sendEmail() {
+            const email = document.getElementById("emailInput").value;
+            if (!email) {
+                alert("Please enter an email.");
+                return;
+            }
+
+            fetch("http://127.0.0.1:8080/send_email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("responseMessage").innerText = data;
+
+                // ✅ Redirect to antivirus.html after 2 seconds
+                setTimeout(() => {
+                    window.location.href = "antivirus.html";
+                }, 2000);
+            })
+            .catch(error => {
+                document.getElementById("responseMessage").innerText = "Error: " + error;
+            });
+        }
+    </script>
+</body>
+</html>

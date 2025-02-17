@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTIVIRUS CLEANER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(to right, #3a7bd5, #3a6073);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            color: white;
+        }
+        h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        #status {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .threat-list {
+            text-align: left;
+            list-style: none;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            display: none;
+            font-size: 14px;
+        }
+        .threat-list li {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        .threat-list li img {
+            width: 18px;
+            margin-right: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ANTIVIRUS CLEANER</h2>
+        <button onclick="scanSystem()">🔍 Scan System</button>
+        <button onclick="removeThreats()">🛡 Remove Threats</button>
+        <button onclick="optimizePerformance()">⚡ Optimize Performance</button>
+        
+        <p id="status">System is safe.</p>
+        <ul id="threatList" class="threat-list">
+            <li><img src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="virus"> ʏᴏᴜʀ ᴅᴇᴠɪᴄᴇ ᴄᴏɴᴛᴀɪɴs sᴇᴠᴇʀᴀʟ ɢʟɪᴛᴄʜ ғɪʟᴇs</li>
+            <li><img src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="virus"> sᴜᴄʜ ᴀs ᴅᴜᴘʟɪᴄᴀᴛᴇ ғɪʟᴇs</li>
+            <li><img src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="virus"> ᴄʟɪᴄᴋ ʀᴇᴍᴏᴠᴇ ᴛʜʀᴇᴀᴛs ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴛʜʀᴇᴀᴛs</li>
+        </ul>
+
+        <div id="requestContainer" class="hidden">
+            <button onclick="requestRemoval()">🔒 Request Removal</button>
+            <p id="requestStatus"></p>
+        </div>
+
+        <div id="requestOptimizeContainer" class="hidden">
+            <button onclick="requestOptimization()">🔄 Request Optimization</button>
+            <p id="requestOptimizeStatus"></p>
+        </div>
+    </div>
+
+    <script>
+        function scanSystem() {
+            document.getElementById("status").innerText = "⚠ Threats found!";
+            document.getElementById("threatList").style.display = "block";
+        }
+
+        function removeThreats() {
+            document.getElementById("status").innerText = "⛔ Files cannot be removed manually. Request removal.";
+            document.getElementById("requestContainer").classList.remove("hidden");
+        }
+
+        function requestRemoval() {
+            document.getElementById("requestStatus").innerText = "Requesting...";
+            setTimeout(() => {
+                document.getElementById("requestStatus").innerText = "✔ Removal request sent.";
+            }, 3000);
+        }
+
+        function optimizePerformance() {
+            document.getElementById("status").innerText = "⚙ System optimized!";
+            document.getElementById("requestOptimizeContainer").classList.remove("hidden");
+        }
+
+        function requestOptimization() {
+            document.getElementById("requestOptimizeStatus").innerText = "Requesting...";
+            setTimeout(() => {
+                document.getElementById("requestOptimizeStatus").innerText = "✔ Optimization request sent.";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
